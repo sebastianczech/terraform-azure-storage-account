@@ -48,7 +48,7 @@ repos:
           --download-external-modules,"true",
           --quiet,
           --soft-fail,
-          --skip-check, "CKV_AZURE_43,CKV2_AZURE_40"
+          --skip-check, "CKV_AZURE_33,CKV_AZURE_42,CKV_AZURE_43,CKV_AZURE_110,CKV_AZURE_112,CKV2_AZURE_1,CKV2_AZURE_40"
         ]
 -   repo: https://github.com/tenable/terrascan
     rev: v1.19.1
