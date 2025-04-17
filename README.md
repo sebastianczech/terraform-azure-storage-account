@@ -14,8 +14,6 @@
 - https://azuretechinsider.com/secure-data-advanced-azure-storage-security/
 - https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-blob-storage
 
-## Docs
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 

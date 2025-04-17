@@ -18,8 +18,6 @@ terraform init
 terraform apply
 ```
 
-## Docs
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
