@@ -1,3 +1,5 @@
+# Storage Account Variables
+
 variable "storage_account_name" {
   description = "The name of the storage account. Must be between 3 and 24 characters in length and use numbers and lower-case letters only."
   type        = string
@@ -29,4 +31,22 @@ variable "account_replication_type" {
   description = "The replication type for the storage account. Can be 'LRS', 'GRS', 'RAGRS', 'ZRS', 'GZRS', or 'RAGZRS'."
   type        = string
   default     = "GRS"
+}
+
+# Key Vault Variables
+
+variable "key_vault_name" {
+  description = "The name of the Key Vault. Must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+  type        = string
+}
+
+variable "key_vault_sku_name" {
+  description = "The SKU name for the Key Vault. Can be either 'standard' or 'premium'."
+  type        = string
+  default     = "standard"
+}
+
+variable "allowed_ip" {
+  description = "The IP address that is allowed to access the Key Vault."
+  type        = string
 }
