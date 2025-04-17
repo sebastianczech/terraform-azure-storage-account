@@ -25,12 +25,16 @@ terraform apply
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | =4.26.0 |
+| <a name="requirement_http"></a> [http](#requirement\_http) | =3.4.5 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | =3.7.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | =4.26.0 |
+| <a name="provider_http"></a> [http](#provider\_http) | =3.4.5 |
+| <a name="provider_random"></a> [random](#provider\_random) | =3.7.1 |
 
 ## Modules
 
@@ -42,7 +46,9 @@ terraform apply
 
 | Name | Type |
 |------|------|
+| [random_string.this](https://registry.terraform.io/providers/hashicorp/random/3.7.1/docs/resources/string) | resource |
 | [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/data-sources/resource_group) | data source |
+| [http_http.this](https://registry.terraform.io/providers/hashicorp/http/3.4.5/docs/data-sources/http) | data source |
 
 ## Inputs
 
