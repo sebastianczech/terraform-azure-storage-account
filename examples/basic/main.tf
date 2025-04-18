@@ -11,16 +11,17 @@ data "http" "this" {
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
 resource "random_string" "this" {
   length  = 16
+  upper   = false
+  numeric = false
   special = false
 }
 
 module "storage_account" {
   source = "../../"
 
-  # names are generated from the resource group name and abbreviation from https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
-  storage_account_name = "${substr(replace(data.azurerm_resource_group.this.name, "-", ""), 0, 21)}st"
-  key_vault_name       = "${random_string.this.result}-kv"
-  allowed_ip           = "${data.http.this.response_body}/32"
+  # names are generated from prefix, random string and abbreviation from https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
+  prefix     = "${var.prefix}-${random_string.this.result}"
+  allowed_ip = data.http.this.response_body
 
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location

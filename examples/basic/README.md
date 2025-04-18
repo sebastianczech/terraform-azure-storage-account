@@ -11,6 +11,15 @@ export ARM_TENANT_ID="10000000-0000-0000-0000-000000000000"
 export ARM_SUBSCRIPTION_ID="20000000-0000-0000-0000-000000000000"
 ```
 
+or
+
+```bash
+az login --use-device-code
+export ARM_SUBSCRIPTION_ID=`az account show --query id --output tsv`
+export ARM_TENANT_ID=`az account show --query tenantId --output tsv`
+export TF_VAR_resource_group_name=`az group list --query "[0].name" --output tsv`
+```
+
 ### Terraform deployment
 
 ```bash
@@ -54,8 +63,9 @@ terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_prefix"></a> [prefix](#input\_prefix) | The prefix to use for the resources name. | `string` | `"lab"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the storage account. | `string` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to assign to the storage account. | `map(string)` | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to assign to the storage account. | `map(string)` | <pre>{<br/>  "environment": "lab"<br/>}</pre> | no |
 
 ## Outputs
 

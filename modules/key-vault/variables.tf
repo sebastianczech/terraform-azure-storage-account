@@ -20,20 +20,19 @@ variable "location" {
   type        = string
 }
 
+variable "log_analytics_workspace_id" {
+  description = "The ID of the Log Analytics workspace to send logs to."
+  type        = string
+}
+
 variable "allowed_ip" {
   description = "The IP address that is allowed to access the Key Vault."
   type        = string
 }
 
-# Storage Account Variables
-variable "account_tier" {
-  description = "The account tier for the storage account. Can be either 'Standard' or 'Premium'."
+# Key Vault Variables
+variable "key_vault_sku_name" {
+  description = "The SKU name for the Key Vault. Can be either 'standard' or 'premium'."
   type        = string
-  default     = "Standard"
-}
-
-variable "account_replication_type" {
-  description = "The replication type for the storage account. Can be 'LRS', 'GRS', 'RAGRS', 'ZRS', 'GZRS', or 'RAGZRS'."
-  type        = string
-  default     = "GRS"
+  default     = "standard"
 }

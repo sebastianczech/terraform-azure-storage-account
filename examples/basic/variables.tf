@@ -6,5 +6,13 @@ variable "resource_group_name" {
 variable "tags" {
   description = "A map of tags to assign to the storage account."
   type        = map(string)
-  default     = {}
+  default = {
+    "environment" = "lab"
+  }
+}
+
+variable "prefix" {
+  description = "The prefix to use for the resources name."
+  type        = string
+  default     = "lab"
 }
