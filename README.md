@@ -34,6 +34,8 @@
 |------|--------|---------|
 | <a name="module_key_vault"></a> [key\_vault](#module\_key\_vault) | ./modules/key-vault | n/a |
 | <a name="module_monitor"></a> [monitor](#module\_monitor) | ./modules/monitor | n/a |
+| <a name="module_private_endpoint"></a> [private\_endpoint](#module\_private\_endpoint) | ./modules/private-endpoint | n/a |
+| <a name="module_vnet"></a> [vnet](#module\_vnet) | ./modules/vnet | n/a |
 
 ## Resources
 

@@ -110,3 +110,91 @@ resource "azurerm_key_vault_key" "this" {
 #   key_vault_id       = azurerm_key_vault.this.id
 #   key_name           = azurerm_key_vault_key.this.name
 # }
+
+module "vnet" {
+  source = "./modules/vnet"
+
+  prefix = var.prefix
+
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  subnets = {
+    pe = {
+      id              = 1
+      name            = "pe"
+      additional_bits = 8
+      nsg_rules = {
+        ssh = {
+          name                       = "AllowSSH"
+          priority                   = 100
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "Tcp"
+          source_port_range          = "*"
+          destination_port_range     = "22"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+        all = {
+          name                       = "DenyAll"
+          priority                   = 200
+          direction                  = "Inbound"
+          access                     = "Deny"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+      }
+    }
+    client = {
+      id              = 2
+      name            = "client"
+      additional_bits = 8
+      nsg_rules = {
+        http = {
+          name                       = "AllowHTTP"
+          priority                   = 100
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "Tcp"
+          source_port_range          = "*"
+          destination_port_range     = "80"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+      }
+    }
+  }
+}
+
+module "private_endpoint" {
+  source = "./modules/private-endpoint"
+
+  prefix = var.prefix
+
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  virtual_network_id = module.vnet.virtual_network_id
+  subnet_id          = module.vnet.subnet_ids["pe"]
+
+  services = {
+    storage_account = {
+      name     = "st"
+      id       = azurerm_storage_account.this.id
+      type     = "blob"
+      dns_name = "privatelink.file.core.windows.net"
+    }
+    key_vault = {
+      name     = "kv"
+      id       = module.key_vault.key_vault_id
+      type     = "vault"
+      dns_name = "privatelink.vaultcore.azure.net"
+    }
+  }
+
+  tags = var.tags
+}
