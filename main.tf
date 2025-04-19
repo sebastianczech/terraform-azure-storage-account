@@ -181,12 +181,31 @@ module "private_endpoint" {
   virtual_network_id = module.vnet.virtual_network_id
   subnet_id          = module.vnet.subnet_ids["pe"]
 
+  # https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns
   services = {
-    storage_account = {
-      name     = "st"
+    storage_account_file = {
+      name     = "st-file"
+      id       = azurerm_storage_account.this.id
+      type     = "file"
+      dns_name = "privatelink.file.core.windows.net"
+    }
+    storage_account_blob = {
+      name     = "st-blob"
       id       = azurerm_storage_account.this.id
       type     = "blob"
-      dns_name = "privatelink.file.core.windows.net"
+      dns_name = "privatelink.blob.core.windows.net"
+    }
+    storage_account_table = {
+      name     = "st-table"
+      id       = azurerm_storage_account.this.id
+      type     = "table"
+      dns_name = "privatelink.table.core.windows.net"
+    }
+    storage_account_queue = {
+      name     = "st-queue"
+      id       = azurerm_storage_account.this.id
+      type     = "queue"
+      dns_name = "privatelink.queue.core.windows.net"
     }
     key_vault = {
       name     = "kv"

@@ -10,8 +10,8 @@ resource "azurerm_private_endpoint" "this" {
   private_service_connection {
     name                           = "${var.prefix}-${each.value.name}-psc"
     is_manual_connection           = false
-    private_connection_resource_id = each.value.id     # azurerm_storage_account.example.id # azurerm_key_vault.example.id
-    subresource_names              = [each.value.type] #["blob"] # ["vault"]
+    private_connection_resource_id = each.value.id
+    subresource_names              = [each.value.type]
   }
 
   tags = var.tags
