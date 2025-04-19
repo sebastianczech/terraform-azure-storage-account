@@ -40,5 +40,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_private_dns_zone_soa_records"></a> [private\_dns\_zone\_soa\_records](#output\_private\_dns\_zone\_soa\_records) | List of private DNS zone SOA records |
+| <a name="output_private_endpoint_ids"></a> [private\_endpoint\_ids](#output\_private\_endpoint\_ids) | List of private endpoint IDs |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

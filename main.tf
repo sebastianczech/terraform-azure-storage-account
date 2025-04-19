@@ -170,19 +170,8 @@ module "vnet" {
   }
 }
 
-module "private_endpoint" {
-  source = "./modules/private-endpoint"
-
-  prefix = var.prefix
-
-  resource_group_name = var.resource_group_name
-  location            = var.location
-
-  virtual_network_id = module.vnet.virtual_network_id
-  subnet_id          = module.vnet.subnet_ids["pe"]
-
-  # https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns
-  services = {
+locals {
+  private_endpoint_services = {
     storage_account_file = {
       name     = "st-file"
       id       = azurerm_storage_account.this.id
@@ -214,6 +203,21 @@ module "private_endpoint" {
       dns_name = "privatelink.vaultcore.azure.net"
     }
   }
+}
+
+module "private_endpoint" {
+  source = "./modules/private-endpoint"
+
+  prefix = var.prefix
+
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  virtual_network_id = module.vnet.virtual_network_id
+  subnet_id          = module.vnet.subnet_ids["pe"]
+
+  # https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns
+  services = local.private_endpoint_services
 
   tags = var.tags
 }

@@ -61,5 +61,6 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_private_endpoints_details"></a> [private\_endpoints\_details](#output\_private\_endpoints\_details) | Private endpoints details |
 | <a name="output_storage_account_id"></a> [storage\_account\_id](#output\_storage\_account\_id) | The ID of the storage account. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -7,3 +7,8 @@ output "storage_account_id" {
   description = "The ID of the storage account."
   value       = module.storage_account.storage_account_id
 }
+
+output "private_endpoints_details" {
+  description = "Private endpoints details"
+  value       = module.storage_account.private_endpoints_details
+}
