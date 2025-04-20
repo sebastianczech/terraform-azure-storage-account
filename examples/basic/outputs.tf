@@ -3,9 +3,9 @@ output "resource_group_id" {
   value       = data.azurerm_resource_group.this.id
 }
 
-output "storage_account_id" {
-  description = "The ID of the storage account."
-  value       = module.storage_account.storage_account_id
+output "storage_account_details" {
+  description = "Storage account details"
+  value       = module.storage_account.storage_account_details
 }
 
 output "private_endpoints_details" {

@@ -57,3 +57,9 @@ variable "account_replication_type" {
   type        = string
   default     = "GRS"
 }
+
+variable "min_tls_version" {
+  description = "The minimum TLS version for the storage account. Can be 'TLS1_0', 'TLS1_1', or 'TLS1_2'."
+  type        = string
+  default     = "TLS1_2"
+}

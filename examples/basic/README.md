@@ -74,5 +74,5 @@ terraform apply
 |------|-------------|
 | <a name="output_private_endpoints_details"></a> [private\_endpoints\_details](#output\_private\_endpoints\_details) | Private endpoints details |
 | <a name="output_resource_group_id"></a> [resource\_group\_id](#output\_resource\_group\_id) | The ID of the resource group in which the storage account was created. |
-| <a name="output_storage_account_id"></a> [storage\_account\_id](#output\_storage\_account\_id) | The ID of the storage account. |
+| <a name="output_storage_account_details"></a> [storage\_account\_details](#output\_storage\_account\_details) | Storage account details |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

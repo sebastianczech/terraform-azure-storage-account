@@ -10,7 +10,8 @@ resource "azurerm_storage_account" "this" {
   shared_access_key_enabled       = true # false is the best practices, but then while provisioning resource there is an error: 403 Key based authentication is not permitted on this storage account
   allow_nested_items_to_be_public = false
 
-  min_tls_version = "TLS1_2"
+  https_traffic_only_enabled = true
+  min_tls_version            = var.min_tls_version
 
   network_rules {
     default_action = "Deny"

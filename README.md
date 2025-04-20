@@ -53,6 +53,7 @@
 | <a name="input_account_tier"></a> [account\_tier](#input\_account\_tier) | The account tier for the storage account. Can be either 'Standard' or 'Premium'. | `string` | `"Standard"` | no |
 | <a name="input_allowed_ip"></a> [allowed\_ip](#input\_allowed\_ip) | The IP address that is allowed to access the Storage Account, Key Vault. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The Azure location where the storage account will be created. | `string` | n/a | yes |
+| <a name="input_min_tls_version"></a> [min\_tls\_version](#input\_min\_tls\_version) | The minimum TLS version for the storage account. Can be 'TLS1\_0', 'TLS1\_1', or 'TLS1\_2'. | `string` | `"TLS1_2"` | no |
 | <a name="input_network"></a> [network](#input\_network) | The network configuration for the storage account. | <pre>map(object({<br/>    id              = number<br/>    name            = string<br/>    additional_bits = number<br/>    nsg_rules = map(object({<br/>      name                       = string<br/>      priority                   = number<br/>      direction                  = string<br/>      access                     = string<br/>      protocol                   = string<br/>      source_port_range          = string<br/>      destination_port_range     = string<br/>      source_address_prefix      = string<br/>      destination_address_prefix = string<br/>    }))<br/>  }))</pre> | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | The prefix to use for the resources name. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the storage account. | `string` | n/a | yes |
@@ -63,5 +64,5 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_private_endpoints_details"></a> [private\_endpoints\_details](#output\_private\_endpoints\_details) | Private endpoints details |
-| <a name="output_storage_account_id"></a> [storage\_account\_id](#output\_storage\_account\_id) | The ID of the storage account. |
+| <a name="output_storage_account_details"></a> [storage\_account\_details](#output\_storage\_account\_details) | Storage account details |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
