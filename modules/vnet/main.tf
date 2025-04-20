@@ -38,7 +38,7 @@ locals {
         rule_key   = rule_key
         rule       = rule
       }
-    ]]) : "${i.subnet_key}${i.rule_key}" => {
+    ]]) : "${i.subnet_key}_${i.rule_key}" => {
     subnet_key = i.subnet_key
     rule_key   = i.rule_key
     rule       = i.rule

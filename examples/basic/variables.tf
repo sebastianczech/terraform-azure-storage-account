@@ -16,3 +16,60 @@ variable "prefix" {
   type        = string
   default     = "lab"
 }
+
+variable "network" {
+  description = "The network configuration for the storage account."
+  type = map(object({
+    id              = number
+    name            = string
+    additional_bits = number
+    nsg_rules = map(object({
+      name                       = string
+      priority                   = number
+      direction                  = string
+      access                     = string
+      protocol                   = string
+      source_port_range          = string
+      destination_port_range     = string
+      source_address_prefix      = string
+      destination_address_prefix = string
+    }))
+  }))
+  default = {
+    pe = {
+      id              = 1
+      name            = "pe"
+      additional_bits = 8
+      nsg_rules       = {}
+    }
+    client = {
+      id              = 2
+      name            = "client"
+      additional_bits = 8
+      nsg_rules = {
+        ssh = {
+          name                       = "AllowSSH"
+          priority                   = 110
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "Tcp"
+          source_port_range          = "*"
+          destination_port_range     = "22"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+        http = {
+          name                       = "AllowHTTP"
+          priority                   = 120
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "Tcp"
+          source_port_range          = "*"
+          destination_port_range     = "80"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+      }
+    }
+  }
+}

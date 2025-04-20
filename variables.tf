@@ -21,8 +21,28 @@ variable "location" {
 }
 
 variable "allowed_ip" {
-  description = "The IP address that is allowed to access the Key Vault."
+  description = "The IP address that is allowed to access the Storage Account, Key Vault."
   type        = string
+}
+
+variable "network" {
+  description = "The network configuration for the storage account."
+  type = map(object({
+    id              = number
+    name            = string
+    additional_bits = number
+    nsg_rules = map(object({
+      name                       = string
+      priority                   = number
+      direction                  = string
+      access                     = string
+      protocol                   = string
+      source_port_range          = string
+      destination_port_range     = string
+      source_address_prefix      = string
+      destination_address_prefix = string
+    }))
+  }))
 }
 
 # Storage Account Variables

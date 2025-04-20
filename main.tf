@@ -6,7 +6,7 @@ resource "azurerm_storage_account" "this" {
   account_tier             = var.account_tier
   account_replication_type = var.account_replication_type
 
-  public_network_access_enabled   = false
+  public_network_access_enabled   = true # limited to IPs listed in the network rules
   shared_access_key_enabled       = true # false is the best practices, but then while provisioning resource there is an error: 403 Key based authentication is not permitted on this storage account
   allow_nested_items_to_be_public = false
 
@@ -119,55 +119,7 @@ module "vnet" {
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  subnets = {
-    pe = {
-      id              = 1
-      name            = "pe"
-      additional_bits = 8
-      nsg_rules = {
-        ssh = {
-          name                       = "AllowSSH"
-          priority                   = 100
-          direction                  = "Inbound"
-          access                     = "Allow"
-          protocol                   = "Tcp"
-          source_port_range          = "*"
-          destination_port_range     = "22"
-          source_address_prefix      = "*"
-          destination_address_prefix = "*"
-        }
-        all = {
-          name                       = "DenyAll"
-          priority                   = 200
-          direction                  = "Inbound"
-          access                     = "Deny"
-          protocol                   = "*"
-          source_port_range          = "*"
-          destination_port_range     = "*"
-          source_address_prefix      = "*"
-          destination_address_prefix = "*"
-        }
-      }
-    }
-    client = {
-      id              = 2
-      name            = "client"
-      additional_bits = 8
-      nsg_rules = {
-        http = {
-          name                       = "AllowHTTP"
-          priority                   = 100
-          direction                  = "Inbound"
-          access                     = "Allow"
-          protocol                   = "Tcp"
-          source_port_range          = "*"
-          destination_port_range     = "80"
-          source_address_prefix      = "*"
-          destination_address_prefix = "*"
-        }
-      }
-    }
-  }
+  subnets = var.network
 }
 
 locals {

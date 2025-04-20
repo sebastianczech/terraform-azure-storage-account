@@ -20,8 +20,10 @@ module "storage_account" {
   source = "../../"
 
   # names are generated from prefix, random string and abbreviation from https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
-  prefix     = "${var.prefix}-${random_string.this.result}"
+  prefix = "${var.prefix}-${random_string.this.result}"
+
   allowed_ip = data.http.this.response_body
+  network    = var.network
 
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
