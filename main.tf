@@ -25,11 +25,23 @@ resource "azurerm_storage_account" "this" {
     }
   }
 
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.this.id]
+  }
+
   sas_policy {
     expiration_period = "00.01:00:00"
   }
 
   tags = var.tags
+}
+
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/user_assigned_identity
+resource "azurerm_user_assigned_identity" "this" {
+  name                = "${var.prefix}-id"
+  resource_group_name = var.resource_group_name
+  location            = var.location
 }
 
 module "monitor" {

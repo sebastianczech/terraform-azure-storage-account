@@ -1,4 +1,6 @@
-* [x] basic storage account module 
+# ToDo
+
+* [x] basic storage account module
 * [x] basic submodules:
   * [x] key-vault
   * [x] monitor
@@ -6,5 +8,5 @@
     * [x] dns-zone
   * [x] vnet
 * [x] basic example
-* [ ] identity
+* [x] identity
 * [ ] diagnostic settings for each data storage
