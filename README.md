@@ -43,6 +43,8 @@
 |------|------|
 | [azurerm_key_vault_key.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/resources/key_vault_key) | resource |
 | [azurerm_monitor_diagnostic_setting.storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/resources/monitor_diagnostic_setting) | resource |
+| [azurerm_monitor_diagnostic_setting.storage_account_blob](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/resources/monitor_diagnostic_setting) | resource |
+| [azurerm_monitor_diagnostic_setting.storage_account_file](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_storage_account.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/resources/storage_account) | resource |
 | [azurerm_user_assigned_identity.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.26.0/docs/resources/user_assigned_identity) | resource |
 

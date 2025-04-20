@@ -62,13 +62,47 @@ resource "azurerm_monitor_diagnostic_setting" "storage_account" {
 
   log_analytics_workspace_id = module.monitor.log_analytics_workspace_id
 
-  # enabled_log {
-  #   category_group = "AllLogs"
-  # }
+  metric {
+    category = "Capacity"
+    enabled  = true
+  }
 
-  # metric {
-  #   category = "AllMetrics"
-  # }
+  metric {
+    category = "Transaction"
+    enabled  = true
+  }
+}
+
+resource "azurerm_monitor_diagnostic_setting" "storage_account_blob" {
+  name               = "${var.prefix}-monitor-st"
+  target_resource_id = "${azurerm_storage_account.this.id}/blobServices/default"
+
+  log_analytics_workspace_id = module.monitor.log_analytics_workspace_id
+
+  enabled_log {
+    category_group = "AllLogs"
+  }
+
+  metric {
+    category = "Capacity"
+    enabled  = true
+  }
+
+  metric {
+    category = "Transaction"
+    enabled  = true
+  }
+}
+
+resource "azurerm_monitor_diagnostic_setting" "storage_account_file" {
+  name               = "${var.prefix}-monitor-st"
+  target_resource_id = "${azurerm_storage_account.this.id}/fileServices/default"
+
+  log_analytics_workspace_id = module.monitor.log_analytics_workspace_id
+
+  enabled_log {
+    category_group = "Audit"
+  }
 
   metric {
     category = "Capacity"

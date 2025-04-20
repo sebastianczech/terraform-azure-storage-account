@@ -9,4 +9,4 @@
   * [x] vnet
 * [x] basic example
 * [x] identity
-* [ ] diagnostic settings for each data storage
+* [x] diagnostic settings for each data storage
