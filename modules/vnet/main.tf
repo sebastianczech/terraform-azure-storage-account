@@ -17,6 +17,7 @@ resource "azurerm_subnet" "this" {
   virtual_network_name              = azurerm_virtual_network.this.name
   address_prefixes                  = [cidrsubnet(var.network_ip_range, each.value.additional_bits, each.value.id)]
   private_endpoint_network_policies = "Disabled"
+  service_endpoints                 = length(each.value.service_endpoints) > 0 ? each.value.service_endpoints : null
 }
 
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group

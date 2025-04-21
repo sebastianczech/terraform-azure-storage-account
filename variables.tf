@@ -28,19 +28,20 @@ variable "allowed_ip" {
 variable "network" {
   description = "The network configuration for the storage account."
   type = map(object({
-    id              = number
-    name            = string
-    additional_bits = number
+    id                = number
+    name              = string
+    additional_bits   = number
+    service_endpoints = optional(list(string), [])
     nsg_rules = map(object({
       name                       = string
       priority                   = number
-      direction                  = string
-      access                     = string
-      protocol                   = string
-      source_port_range          = string
-      destination_port_range     = string
-      source_address_prefix      = string
-      destination_address_prefix = string
+      direction                  = optional(string, "Inbound")
+      access                     = optional(string, "Deny")
+      protocol                   = optional(string, "Tcp")
+      source_port_range          = optional(string, "*")
+      destination_port_range     = optional(string, "*")
+      source_address_prefix      = optional(string, "*")
+      destination_address_prefix = optional(string, "*")
     }))
   }))
 }

@@ -10,3 +10,4 @@
 * [x] basic example
 * [x] identity
 * [x] diagnostic settings for each data storage
+* [x] add support for service endpoints

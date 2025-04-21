@@ -30,9 +30,10 @@ variable "network_ip_range" {
 variable "subnets" {
   description = "Map of subnets to create in the virtual network."
   type = map(object({
-    id              = number
-    name            = string
-    additional_bits = number
+    id                = number
+    name              = string
+    additional_bits   = number
+    service_endpoints = optional(list(string), [])
     nsg_rules = map(object({
       name                       = string
       priority                   = number
