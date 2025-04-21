@@ -15,20 +15,21 @@
 - https://azuretechinsider.com/secure-data-advanced-azure-storage-security/
 - https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-blob-storage
 
-### Availability
+### Authentication & authorization
+
+- https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview
+- https://learn.microsoft.com/en-us/azure/storage/common/authorize-data-access
+
+### Data protection
 
 - https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview
 - https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy
+- https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-storage-overview
 
 ### Networking
 
 - https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/service-endpoints-vs-private-endpoints/3962134
 - https://techcommunity.microsoft.com/blog/fasttrackforazureblog/azure-private-endpoint-vs-service-endpoint-a-comprehensive-guide/4363095
-
-### Authentication & authorization
-
-- https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview
-- https://learn.microsoft.com/en-us/azure/storage/common/authorize-data-access
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
