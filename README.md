@@ -6,13 +6,29 @@
 
 ## Links
 
+### Storage accounts
+
 - https://azure.github.io/Azure-Verified-Modules/indexes/terraform/tf-resource-modules/
 - https://github.com/Azure/terraform-azurerm-avm-res-storage-storageaccount
 - https://github.com/claranet/terraform-azurerm-storage-account
-- https://techcommunity.microsoft.com/blog/fasttrackforazureblog/azure-private-endpoint-vs-service-endpoint-a-comprehensive-guide/4363095
 - https://learn.microsoft.com/en-us/azure/storage/
 - https://azuretechinsider.com/secure-data-advanced-azure-storage-security/
 - https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-blob-storage
+
+### Availability
+
+- https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview
+- https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy
+
+### Networking
+
+- https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/service-endpoints-vs-private-endpoints/3962134
+- https://techcommunity.microsoft.com/blog/fasttrackforazureblog/azure-private-endpoint-vs-service-endpoint-a-comprehensive-guide/4363095
+
+### Authentication & authorization
+
+- https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview
+- https://learn.microsoft.com/en-us/azure/storage/common/authorize-data-access
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
